@@ -109,8 +109,4 @@ public class StudentUtilities {
 
     }
 
-<<<<<<< HEAD
-    
-=======
->>>>>>> edf2df3bbe9e3af48b63e824d6e165f17610ec9b
 }
