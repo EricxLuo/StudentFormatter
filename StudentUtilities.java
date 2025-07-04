@@ -20,7 +20,7 @@ public class StudentUtilities {
             Integer.parseInt(c[3]),//test 2
             Integer.parseInt(c[4]),//test 3
             Integer.parseInt(c[5]) //test 4
-            )
+            );
 
         return student;
 
