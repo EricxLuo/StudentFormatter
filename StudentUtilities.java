@@ -1,13 +1,6 @@
 import java.util.ArrayList;
-<<<<<<< HEAD
-public class StudentUtilities{
-    
-
-
-=======
 
 public class StudentUtilities {
->>>>>>> edf2df3bbe9e3af48b63e824d6e165f17610ec9b
 
     /**
      * Runs the read functions and combines the two arrays together
@@ -33,10 +26,6 @@ public class StudentUtilities {
 
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> edf2df3bbe9e3af48b63e824d6e165f17610ec9b
     /**
      * Reads a line of CourseFile.txt and puts into array a
      * @param course
@@ -62,10 +51,7 @@ public class StudentUtilities {
         return a;
         
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> edf2df3bbe9e3af48b63e824d6e165f17610ec9b
     /**
      * Reads a line of NameFile.txt and puts into array a
      * @param text
@@ -84,11 +70,6 @@ public class StudentUtilities {
 
     }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> edf2df3bbe9e3af48b63e824d6e165f17610ec9b
     /**
      * Checks both files student names and will combine if they match
      * @param text
