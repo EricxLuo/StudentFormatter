@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 
 public class StudentUtilities {
 
@@ -9,23 +9,28 @@ public class StudentUtilities {
      * 
      * 
      */
-    public static Student combineAll(final String course,final string text){
+    public static Student combineAll(final String course,final String text){
 
         String[] c = combine(readCourseLine(course),readNameLine(text));
         Student student = new Student(
-            Integer.parseInt(c[0]),//id
-            c[6],//name
-            c[1],//course code
-            Integer.parseInt(c[2]),//test 1
-            Integer.parseInt(c[3]),//test 2
-            Integer.parseInt(c[4]),//test 3
-            Integer.parseInt(c[5]) //test 4
+            Integer.parseInt(c[0]),
+            c[6],
+            c[1],
+            finalGrade(Integer.parseInt(c[2]),Integer.parseInt(c[3]),Integer.parseInt(c[4]),Integer.parseInt(c[5]))
             );
 
         return student;
 
     }
 
+    public static double finalGrade(int t1,int t2,int t3, int exam){
+        Double mark=0.0;
+
+        mark = (t1 * 0.2) + (t2*0.2) + (t3*0.2) + (exam *0.4);
+
+        return mark;
+
+    }
     /**
      * Reads a line of CourseFile.txt and puts into array a
      * @param course
@@ -37,15 +42,15 @@ public class StudentUtilities {
         String[] a = new String[6];
         
 
-        String[] dataSplit = line.split(",");
+        String[] dataSplit = course.split(",");
 
 
-        String studentId = dataSplit[0];
-        String course = dataSplit[1];
-        String test1 = dataSplit[2];
-        String test2 = dataSplit[3];
-        String test3 = dataSplit[4];
-        String finalExam = ataSplit[5];
+        a[0] = dataSplit[0];
+        a[1]= dataSplit[1];
+        a[2]= dataSplit[2];
+        a[3] = dataSplit[3];
+        a[4] = dataSplit[4];
+        a[5] = dataSplit[5];
 
        
         return a;
@@ -58,12 +63,12 @@ public class StudentUtilities {
      * @return b
      * 
      */
-    public static String[] readNameLine(final string text){  
+    public static String[] readNameLine(final String text){  
         String b[] = new String [2];
         
-        String[] dataSplit = line.split(",");
-        String studentId =dataSplit[0];
-        String studentName = dataSplit[1];
+        String[] dataSplit = text.split(",");
+        b[0] =dataSplit[0];
+        b[1] = dataSplit[1];
 
 
         return b;
@@ -76,18 +81,15 @@ public class StudentUtilities {
      * @return student
      * 
      */
-    public static Student combine(String[]a, String[]b){
-        
-        if (a[0] == b[1]){
-            String combined[] = [7];
-            for (int i=0; i <a.length; i++_{
+    public static String[] combine(String[]a, String[]b){
+        String combined[] = new String[7];
+        if (a[0].equals( b[1])){
+            for (int i=0; i <a.length; i++){
                 combined[i] = a[i];
-
-            })
-            combined[7] = b[1];            
-            return combined;
+            }
+            combined[6] = b[1];              
         }
-
+        return combined;    
     }
 
 }

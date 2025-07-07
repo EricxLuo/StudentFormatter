@@ -1,36 +1,30 @@
 import java.io.File;
 import java.util.Scanner;
-import StudentUtilities;
+import java.io.FileNotFoundException;
 
 
 public class StudentMain {
 
-    Student student;
+    
 
 
-    public static void main(final String[] args){
+    public static void main(final String[] args) throws FileNotFoundException{
 
-        Scanner courseFile = new Scanner ("CourseFile.txt");
-        Scanner nameFile = new Scanner ("NameFile.txt");
+        Scanner courseFile = new Scanner (new File("CourseFile.txt"));
+        Scanner nameFile = new Scanner (new File("NameFile.txt"));
         
         String courseLine;
 
         String nameLine;
 
-        while (nameLine.hasNextLine()){
-            nameLine = nameLine.nextLine();
-            while (courseLine.hasNextLine()){
-                courseLine = courseLine.nextline();
+        while (nameFile.hasNextLine()){
+            nameLine = nameFile.nextLine();
+            while (courseFile.hasNextLine()){
+                courseLine = courseFile.nextLine();
 
 
-                student = StudentUtilities.combineAll(courseLine,nameLine);
+                Student student = StudentUtilities.combineAll(courseLine,nameLine);
 
-
-
-
-
-
-                
                 /*student is combined. now call the compare to 
                 and then start sorting the list.
                 */
