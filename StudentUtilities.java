@@ -9,7 +9,7 @@ public class StudentUtilities {
      * 
      * 
      */
-    public static Student readAll(Final String course,Final string text){
+    public static Student combineAll(Final String course,Final string text){
 
         String[] c = combine(readCourseLine(course),readNameLine(text));
         Student student = new Student(
