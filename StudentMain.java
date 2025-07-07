@@ -28,6 +28,10 @@ public class StudentMain {
                 /*student is combined. now call the compare to 
                 and then start sorting the list.
                 */
+
+
+
+
             } 
            
             
@@ -48,7 +52,8 @@ public class StudentMain {
 
 
     */
-
+        courseFile.close();
+        nameFile.close();
 
     }
 }
