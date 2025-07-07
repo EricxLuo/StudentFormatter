@@ -1,6 +1,8 @@
 import java.io.File;
 import java.util.Scanner;
 import StudentUtilities;
+
+
 public class StudentMain {
 
     Student student;
@@ -12,7 +14,9 @@ public class StudentMain {
         Scanner nameFile = new Scanner ("NameFile.txt");
         
         String courseLine;
+
         String nameLine;
+
         while (nameLine.hasNextLine()){
             nameLine = nameLine.nextLine();
             while (courseLine.hasNextLine()){
@@ -20,6 +24,12 @@ public class StudentMain {
 
 
                 student = StudentUtilities.combineAll(courseLine,nameLine);
+
+
+
+
+
+
                 
                 /*student is combined. now call the compare to 
                 and then start sorting the list.

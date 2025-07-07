@@ -9,7 +9,7 @@ public class StudentUtilities {
      * 
      * 
      */
-    public static Student combineAll(Final String course,Final string text){
+    public static Student combineAll(final String course,final string text){
 
         String[] c = combine(readCourseLine(course),readNameLine(text));
         Student student = new Student(
@@ -32,7 +32,7 @@ public class StudentUtilities {
      * @return a
      * 
      */
-    public static String[] readCourseLine(Final String course){
+    public static String[] readCourseLine(final String course){
 
         String[] a = new String[6];
         
@@ -58,7 +58,7 @@ public class StudentUtilities {
      * @return b
      * 
      */
-    public static String[] readNameLine(Final string text){  
+    public static String[] readNameLine(final string text){  
         String b[] = new String [2];
         
         String[] dataSplit = line.split(",");
