@@ -1,35 +1,159 @@
+
 <!DOCTYPE html>
-<html>
-    <head>
-     <style>
-      /* Add smooth scrolling to the whole page */
-      html {
-        scroll-behavior: smooth;
-      }
-    </style>   
-     
-    </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Software Design Document - Student Formatter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #004080;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, monospace;
+    }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+  </style>
+</head>
 <body>
-<h1>CP317 Project</h1>
 
-<section class = "intro">
+  <h1>Software Design Document (SDD)</h1>
+  <p><strong>Course:</strong> CP-317-C, Wilfrid Laurier University</p>
 
-    <p>
-        1. Introduction
+  <h2>1. Introduction</h2>
+  <p>
+    This project processes two text files—<strong>NameFile.txt</strong> and <strong>CourseFile.txt</strong>—to generate
+    a summarized performance report for students. It calculates final grades using the formula:
+  </p>
+  <pre><code>Final Grade = Test1 * 0.2 + Test2 * 0.2 + Test3 * 0.2 + FinalExam * 0.4</code></pre>
+  <p>
+    The output is written to a new file, sorted by student ID. This group project emphasizes object-oriented programming and collaboration.
+  </p>
 
-This Software Design Document provides information on the group project for CP-317-C at Wilfrid Laurier University. This project will process two text files, where one of the files contains the students names, and the other with the course along with the test scores, and then output to a new file summarizing the students performance. This software contains two input files, “CourseFiles.txt” and “NameFile.txt”. CourseFile includes Student ID, Course codes, Test scores, and Exam scores. NameFile includes the student ID and student name. This software will calculate the student's final grade in their course by using the formula:
-Final Grade = Test 1 x 20% + Test 2 x 20% + Test 3 x 20% + Final Exam x 40%
-Then, formatted and output results into a new file, which is sorted by student ID. This project is completed by a group of four students in CP-317-C and serves as a tool to help develop our skills in object-oriented design principles, offensive programming, communication and collaboration skills.
+  <h2>2. Architecture Design</h2>
+  <p><strong>Architecture:</strong> Monolithic</p>
+  <p>
+    All features are integrated into a single Java program. It performs file I/O, data processing, sorting, and output generation.
+  </p>
 
-    </p>
+  <h3>2.1 System Components</h3>
+  <ul>
+    <li><strong>Input Module:</strong> Reads and validates NameFile.txt and CourseFile.txt</li>
+    <li><strong>Data Processing Module:</strong> Matches student IDs and calculates grades</li>
+    <li><strong>Sorting Module:</strong> Sorts students by ID using Collections.sort()</li>
+    <li><strong>Output Module:</strong> Formats and writes output to StudentDatabase.txt</li>
+  </ul>
 
-</section>
+  <h3>2.2 Class Diagram</h3>
+  <pre><code>+---------------------+
+| Student             |
++---------------------+
+| - id: String        |
+| - name: String      |
+| - course: String    |
+| - test1: double     |
+| - test2: double     |
+| - test3: double     |
+| - finalExam: double |
+| + calculateGrade()  |
++---------------------+
 
-<section class = "design">
-    
-</section>
++--------------------------+
+| StudentFormatter         |
++--------------------------+
+| + readNameFile()         |
+| + readCourseFile()       |
+| + processData()          |
+| + sortData()             |
+| + writeOutputFile()      |
++--------------------------+
+</code></pre>
 
+  <h3>2.3 Data Flow Diagram</h3>
+  <pre><code>[NameFile.txt]       [CourseFile.txt]
+       |                      |
+       v                      v
+   readNameFile()       readCourseFile()
+         \_____________________/
+                   |
+             processData()
+                   |
+               sortData()
+                   |
+         writeOutputFile()
+                   |
+       [StudentDatabase.txt]
+</code></pre>
+
+  <h2>3. Detailed Design</h2>
+
+  <h3>3.1 Overview</h3>
+  <p>
+    Written in Java, this program reads two files, computes final grades, and outputs a sorted table.
+  </p>
+
+  <h3>3.2 Grade Calculation</h3>
+  <p>
+    Each line in <strong>CourseFile.txt</strong> is split by commas. The last four values represent Test1, Test2, Test3, and Final Exam scores.
+  </p>
+
+  <h3>3.3 Functions</h3>
+  <p>
+    The following functions are used:
+    <ul>
+      <li><code>readNameFile()</code> – Parses student names and IDs</li>
+      <li><code>readCourseFile()</code> – Parses test and course data</li>
+      <li><code>processData()</code> – Merges and calculates final grades</li>
+      <li><code>sortData()</code> – Sorts by student ID</li>
+      <li><code>writeOutputFile()</code> – Outputs formatted table</li>
+    </ul>
+  </p>
+
+  <h3>3.4 Output Example</h3>
+  <pre><code>Student Name        Student ID    Course Code    Final Grade
+-------------------------------------------------------------
+David Brown         123456789     CP317          100%
+Eric Luo            169060595     CP104          60%
+George Washington   160335035     CP709          97%</code></pre>
+
+  <h2>4. Summary</h2>
+  <p>
+    This application integrates file handling, data parsing, and formatted output, demonstrating key Java programming concepts and team collaboration.
+  </p>
+
+  <h2>5. References</h2>
+  <ul>
+    <li><a href="https://docs.oracle.com/en/java/javase/21/docs/api/index.html" target="_blank">Oracle Java SE 21 API Docs</a></li>
+    <li><a href="https://github.com/EricxLuo/StudentFormatter" target="_blank">GitHub - StudentFormatter</a></li>
+  </ul>
 
 </body>
 </html>
+  Next Steps for You:
 
+Save this as sdd.html or paste into index.html if it's your main page.
+Make sure your GitHub repository has this HTML file in the root directory.
+Push your changes to GitHub.
+Visit your GitHub Pages link to see it live!
+If you'd like me to help:
+
+add download buttons for your .jar or `.z
+
+
+
+ChatGPT can make mistakes. Check important info. See Cookie Preferences.
+ChatGPT is still generating a response...
