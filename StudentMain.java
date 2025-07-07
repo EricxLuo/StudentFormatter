@@ -1,7 +1,7 @@
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
-
+import java.util.ArrayList;
 
 public class StudentMain {
 
@@ -16,27 +16,21 @@ public class StudentMain {
         String courseLine;
 
         String nameLine;
-
+        ArrayList<Student> studentList = new ArrayList<Student>();
         while (nameFile.hasNextLine()){
             nameLine = nameFile.nextLine();
             while (courseFile.hasNextLine()){
                 courseLine = courseFile.nextLine();
-
-
-                Student student = StudentUtilities.combineAll(courseLine,nameLine);
-
-                /*student is combined. now call the compare to 
-                and then start sorting the list.
-                */
-
-
-
-
-            } 
-           
-            
+                studentList.add(StudentUtilities.combineAll(courseLine,nameLine));
+            }      
         }
 
+        while (!studentList.isEmpty()){
+
+                
+
+
+        }
     /*
         while nameline
 

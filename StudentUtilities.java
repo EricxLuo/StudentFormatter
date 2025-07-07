@@ -25,9 +25,7 @@ public class StudentUtilities {
 
     public static double finalGrade(int t1,int t2,int t3, int exam){
         Double mark=0.0;
-
         mark = (t1 * 0.2) + (t2*0.2) + (t3*0.2) + (exam *0.4);
-
         return mark;
 
     }
@@ -38,23 +36,8 @@ public class StudentUtilities {
      * 
      */
     public static String[] readCourseLine(final String course){
-
-        String[] a = new String[6];
-        
-
-        String[] dataSplit = course.split(",");
-
-
-        a[0] = dataSplit[0];
-        a[1]= dataSplit[1];
-        a[2]= dataSplit[2];
-        a[3] = dataSplit[3];
-        a[4] = dataSplit[4];
-        a[5] = dataSplit[5];
-
-       
+        String[] a = course.split(",");
         return a;
-        
     }
 
     /**
@@ -63,14 +46,8 @@ public class StudentUtilities {
      * @return b
      * 
      */
-    public static String[] readNameLine(final String text){  
-        String b[] = new String [2];
-        
-        String[] dataSplit = text.split(",");
-        b[0] =dataSplit[0];
-        b[1] = dataSplit[1];
-
-
+    public static String[] readNameLine(final String text){     
+        String[] b = text.split(",");
         return b;
 
     }
