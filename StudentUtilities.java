@@ -11,7 +11,7 @@ public class StudentUtilities {
      */
     public static Student combineAll(final String course,final String text){
 
-        String[] c = combine(readCourseLine(course),readNameLine(text));
+        String[] c = combine(course,text);
         Student student = new Student(
             Integer.parseInt(c[0]),
             c[6],
@@ -58,13 +58,18 @@ public class StudentUtilities {
      * @return student
      * 
      */
-    public static String[] combine(String[]a, String[]b){
-        String combined[] = new String[7];
-        if (a[0].equals( b[1])){
+    public static String[] combine(final String course, final String text){
+        String[] a = course.split(",");
+        String[] b = text.split(",");
+        String[] combined = new String[7];
+
+        if (a[0].equals( b[0])){
             for (int i=0; i <a.length; i++){
-                combined[i] = a[i];
+
+                
+                combined[i] = a[i].trim();
             }
-            combined[6] = b[1];              
+            combined[6] = b[1].trim();              
         }
         return combined;    
     }

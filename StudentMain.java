@@ -10,44 +10,45 @@ public class StudentMain {
 
     public static void main(final String[] args) throws FileNotFoundException{
 
-        Scanner courseFile = new Scanner (new File("CourseFile.txt"));
-        Scanner nameFile = new Scanner (new File("NameFile.txt"));
+        Scanner courseFile = new Scanner (new File("StudentFormatter/CourseFile.txt"));
+        Scanner nameFile = new Scanner (new File("StudentFormatter/NameFile.txt"));
         
-        String courseLine;
-
-        String nameLine;
+     
         ArrayList<Student> studentList = new ArrayList<Student>();
+        ArrayList<String> names = new ArrayList<>();
+        ArrayList<String> courses = new ArrayList<>();
+
+        
         while (nameFile.hasNextLine()){
-            nameLine = nameFile.nextLine();
-            while (courseFile.hasNextLine()){
-                courseLine = courseFile.nextLine();
-                studentList.add(StudentUtilities.combineAll(courseLine,nameLine));
-            }      
+            names.add(nameFile.nextLine().trim());
         }
+        while (courseFile.hasNextLine()){
+            courses.add(courseFile.nextLine().trim());
+        }      
 
-        while (!studentList.isEmpty()){
-
-                
-
-
+        for (String nameLine: names){
+            String compName = nameLine.split(",")[0].trim();
+            for (String courseLine: courses){
+                String compID = courseLine.split(",")[0].trim();
+                if (compID.equals(compName)){
+                    studentList.add(StudentUtilities.combineAll(courseLine,nameLine));
+                } 
+            }
+            
         }
-    /*
-        while nameline
+    
+        
 
-            while courseline
+        studentList.sort(null);
 
-                compare name and course
-                
-                if match then combine.
+        for (Student s : studentList) {
+            System.out.println(s);
+        }
+        
 
-
-
-
-
-
-    */
         courseFile.close();
         nameFile.close();
 
     }
+    
 }

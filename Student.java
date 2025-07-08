@@ -1,4 +1,4 @@
-public class Student {
+public class Student implements Comparable<Student>{
     // Maximum and minimum grade
     public final double maxGrade = 100.00;
     public final double minGrade = 0.00;
@@ -6,21 +6,21 @@ public class Student {
     // Fields
     private int ID;
     private String name;
-    private String Course;
+    private String course;
     private double mark;
 
     /**
      * Instantiates a student object.
      *
-     * @param Name   Student Full Name
-     * @param Course Course Code
-     * @param ID     Student ID
+     * @param ID   Student Full Name
+     * @param name Course Code
+     * @param course     Student ID
      * @param mark   Student Mark
      */
-    public Student(final int ID, final String name, final String Course, final double mark) {
+    public Student(final int ID, final String name, final String course, final double mark) {
         this.ID = ID;
         this.name = name;
-        this.Course = Course;
+        this.course = course;
         this.mark = mark;
 
         return;
@@ -34,18 +34,23 @@ public class Student {
      *               return a returns a interger to show if the perosn is larger or
      *               smaller or the same
      */
-
+    @Override
     public int compareTo(final Student person) {
         int a = Integer.compare(this.ID, person.ID);
 
         if (a == 0) {
-            a = this.Course.compareTo(person.Course);
+            a = this.course.compareTo(person.course);
         }
 
         return a;
 
     }
 
+
+    @Override
+    public String toString(){
+        return (ID+" | "+ name +" | "+ course+" | "+mark);
+    }
     /**
      * Getter for ID attribute.
      *
@@ -71,7 +76,7 @@ public class Student {
      * @return Course
      */
     public String getCourse() {
-        return this.Course;
+        return this.course;
     }
 
     /**
