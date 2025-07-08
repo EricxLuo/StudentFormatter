@@ -4,6 +4,19 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.io.FileWriter;
 import java.io.IOException;
+
+
+
+/*
+ * 
+ * Main file, reads each file, splits the names and then loops through all IDS to check if they match
+ * If match, call combineAll from StudentUtilities to make a Student object
+ * Then call .sort to sort by ID
+ * 
+ * Finally, format into a new file
+ * 
+ * 
+ */
 public class StudentMain {
 
     
@@ -40,7 +53,9 @@ public class StudentMain {
         
 
         studentList.sort(null);
-        FileWriter formattedFile = new FileWriter("formattedStudents.txt");
+        FileWriter formattedFile = new FileWriter("StudentDatabase.txt");
+        formattedFile.write("Student ID | Student Name         | Course Code | Final Grade \n" );
+        formattedFile.write ("------------------------------------------------------------\n");
         for (Student s : studentList) {
             formattedFile.write(s +"\n" );
         }

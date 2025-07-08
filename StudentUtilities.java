@@ -1,13 +1,11 @@
-
-
 public class StudentUtilities {
 
     /**
-     * Runs the read functions and combines the two arrays together
+     * Runs the read functions and combines the two arrays together into a Student Object
      * @param course
      * @param text
      * 
-     * 
+     * @return student
      */
     public static Student combineAll(final String course,final String text){
 

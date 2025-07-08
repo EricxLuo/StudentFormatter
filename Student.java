@@ -49,7 +49,7 @@ public class Student implements Comparable<Student>{
 
     @Override
     public String toString(){
-        return (ID+" | "+ name +" | "+ course+" | "+mark);
+        return String.format("%-10s | %-20s | %-11s |%.1f",ID,name,course,mark);
     }
     /**
      * Getter for ID attribute.
