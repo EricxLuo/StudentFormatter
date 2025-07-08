@@ -2,14 +2,14 @@ import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-
+import java.io.FileWriter;
+import java.io.IOException;
 public class StudentMain {
 
     
 
 
-    public static void main(final String[] args) throws FileNotFoundException{
-
+    public static void main(final String[] args) throws FileNotFoundException, IOException{
         Scanner courseFile = new Scanner (new File("StudentFormatter/CourseFile.txt"));
         Scanner nameFile = new Scanner (new File("StudentFormatter/NameFile.txt"));
         
@@ -40,15 +40,14 @@ public class StudentMain {
         
 
         studentList.sort(null);
-
+        FileWriter formattedFile = new FileWriter("formattedStudents.txt");
         for (Student s : studentList) {
-            System.out.println(s);
+            formattedFile.write(s +"\n" );
         }
-        
-
+    
         courseFile.close();
         nameFile.close();
-
+        formattedFile.close();
     }
     
 }
