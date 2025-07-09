@@ -17,7 +17,7 @@ public class Student extends Person implements Comparable<Student> {
      * @param mark   Student Mark
      */
     public Student(final int ID, final String name, final String course, final double mark) {
-        super(ID, name);
+        super(ID, name); //Inheritance
         this.course = course;
         this.mark = mark;
 
