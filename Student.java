@@ -1,25 +1,23 @@
-public class Student implements Comparable<Student>{
+public class Student extends Person implements Comparable<Student> {
     // Maximum and minimum grade
     public final double maxGrade = 100.00;
     public final double minGrade = 0.00;
 
     // Fields
-    private int ID;
-    private String name;
+
     private String course;
     private double mark;
 
     /**
      * Instantiates a student object.
      *
-     * @param ID   Student Full Name
-     * @param name Course Code
-     * @param course     Student ID
+     * @param ID     Student Full Name
+     * @param name   Course Code
+     * @param course Student ID
      * @param mark   Student Mark
      */
     public Student(final int ID, final String name, final String course, final double mark) {
-        this.ID = ID;
-        this.name = name;
+        super(ID, name);
         this.course = course;
         this.mark = mark;
 
@@ -46,28 +44,9 @@ public class Student implements Comparable<Student>{
 
     }
 
-
     @Override
-    public String toString(){
-        return String.format("%-10s | %-20s | %-11s |%.1f",ID,name,course,mark);
-    }
-    /**
-     * Getter for ID attribute.
-     *
-     * @return ID
-     */
-    public int getID() {
-        return this.ID;
-    }
-
-    /**
-     * Getter for Name attribute.
-     * S
-     * 
-     * @return Name
-     */
-    public String getName() {
-        return this.name;
+    public String toString() {
+        return String.format("%-10s | %-20s | %-11s |%.1f", ID, name, course, mark);
     }
 
     /**
