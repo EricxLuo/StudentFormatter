@@ -21,8 +21,8 @@ public class StudentMain {
             throws InvalidGradeException, InvalidCourseException, InvalidIDException, InvalidNameException {
 
         try {
-            Scanner courseFile = new Scanner(new File("CourseFile.txt"));
-            Scanner nameFile = new Scanner(new File("NameFile.txt"));
+            Scanner courseFile = new Scanner(new File("StudentFormatter/CourseFile.txt"));
+            Scanner nameFile = new Scanner(new File("StudentFormatter/NameFile.txt"));
 
             ArrayList<Student> studentList = new ArrayList<Student>();
             ArrayList<String> names = new ArrayList<>();
