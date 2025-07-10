@@ -17,7 +17,7 @@ public class Student extends Person implements Comparable<Student> {
      * @param mark   Student Mark
      */
     public Student(final int ID, final String name, final String course, final double mark) {
-        super(ID, name); //Inheritance
+        super(ID, name); // Inheritance
         this.course = course;
         this.mark = mark;
 
@@ -32,7 +32,7 @@ public class Student extends Person implements Comparable<Student> {
      *               return a returns a interger to show if the perosn is larger or
      *               smaller or the same
      */
-    @Override
+
     public int compareTo(final Student person) {
         int a = Integer.compare(this.ID, person.ID);
 
@@ -44,9 +44,9 @@ public class Student extends Person implements Comparable<Student> {
 
     }
 
-    @Override
     public String toString() {
-        return String.format("%-10s | %-20s | %-11s |%.1f", ID, name, course, mark);
+
+        return String.format("%-10s | %-20s | %-11s |%.1f", getID(), getName(), course, mark);
     }
 
     /**

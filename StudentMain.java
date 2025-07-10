@@ -19,9 +19,8 @@ public class StudentMain {
 
     public static void main(final String[] args) {
 
-
-        try{
-            Scanner courseFile = new Scanner(new File("CoureFile.txt"));
+        try {
+            Scanner courseFile = new Scanner(new File("CourseFile.txt"));
             Scanner nameFile = new Scanner(new File("NameFile.txt"));
 
             ArrayList<Student> studentList = new ArrayList<Student>();
@@ -59,12 +58,11 @@ public class StudentMain {
             formattedFile.close();
         }
 
-        //Offensive Programming
-        catch(FileNotFoundException fError){
+        // Offensive Programming
+        catch (FileNotFoundException fError) {
             fError.printStackTrace();
 
-        }
-        catch(IOException ioError){
+        } catch (IOException ioError) {
             ioError.printStackTrace();
         }
     }
