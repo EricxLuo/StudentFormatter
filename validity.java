@@ -1,5 +1,9 @@
 
 public class validity {
+    /*
+     * @param ID ID is the student ID given to us
+     *
+     */
 
     public static void validID(final String ID) throws InvalidIDException {
         if (ID == null || ID.isBlank()) {
@@ -17,21 +21,31 @@ public class validity {
         }
     }
 
-    public static void validGrade(int grade) throws InvalidGradeException {
+    public static boolean validGrade(int grade) throws InvalidGradeException {
         if (grade < 0 || grade > 100) {
-            throw InvalidGradeException.forInvalidGrade();
+            return false;
         }
+        return true;
     }
 
     public static void validCourse(String Course) throws InvalidCourseException {
-        int i;
-        for (i = 0; i < 5; i++) {
-            if (!Character.isDigit(Course.charAt(i)) || Character.isAlphabetic(Course.charAt(i))) {
+        // Check for null or incorrect length
+        if (Course == null || Course.length() != 5) {
+            throw InvalidCourseException.forInvalidCourse();
+        }
+
+        // Check first 2 characters are letters
+        for (int i = 0; i < 2; i++) {
+            if (!Character.isLetter(Course.charAt(i))) {
                 throw InvalidCourseException.forInvalidCourse();
             }
         }
-        if (i != 5) {
-            throw InvalidCourseException.forInvalidCourse();
+
+        // Check last 3 characters are digits
+        for (int i = 2; i < 5; i++) {
+            if (!Character.isDigit(Course.charAt(i))) {
+                throw InvalidCourseException.forInvalidCourse();
+            }
         }
     }
 
@@ -42,7 +56,7 @@ public class validity {
         for (i = 0; i < name.length(); i++) {
             if (name.charAt(i) == ' ') {
                 space = true;
-            } else if (space) {
+            } else if (name.charAt(i) == ' ' && space) {
                 throw InvalidNameException.forInvalidName();
             }
 

@@ -1,3 +1,4 @@
+
 public class StudentUtilities {
 
     /**
@@ -9,9 +10,15 @@ public class StudentUtilities {
      * 
      * @return student
      */
-    public static Student combineAll(final String course, final String text) {
+    public static Student combineAll(final String course, final String text)
+            throws InvalidGradeException, InvalidCourseException, InvalidIDException, InvalidNameException {
 
         String[] c = combine(course, text);
+
+        validity.validID(c[0]);
+        validity.validName(c[6]);
+        validity.validCourse(c[1]);
+
         Student student = new Student(
                 Integer.parseInt(c[0]),
                 c[6],
@@ -23,9 +30,16 @@ public class StudentUtilities {
 
     }
 
-    public static double finalGrade(int t1, int t2, int t3, int exam) {
-        Double mark = 0.0;
-        mark = (t1 * 0.2) + (t2 * 0.2) + (t3 * 0.2) + (exam * 0.4);
+    public static double finalGrade(int t1, int t2, int t3, int exam) throws InvalidGradeException {
+        Double mark = -1.0;
+        if (!validity.validGrade(t1) || !validity.validGrade(t2) || !validity.validGrade(t3)
+                || !validity.validGrade(exam)) {
+            throw InvalidGradeException.forInvalidGrade();
+
+        } else {
+            mark = t1 * 0.2 + t2 * 0.2 + t3 * 0.2 + exam * 0.4;
+        }
+
         return mark;
 
     }
