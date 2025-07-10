@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CP-317 SDD - Student Formatter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      background: #ffffff;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #004080;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>317 SDD Layout</h1>
+
+  <h2>1. Introduction</h2>
+  <p>
+    This Software Design Document provides information on the group project for CP-317-C at Wilfrid Laurier University. This project will process two text files, where one of the files contains the students names, and the other with the course along with the test scores, and then output to a new file summarizing the students performance. This software contains two input files, “CourseFiles.txt” and “NameFile.txt”. CourseFile includes Student ID, Course codes, Test scores, and Exam scores. NameFile includes the student ID and student name. This software will calculate the student's final grade in their course by using the formula:
+  </p>
+  <pre><code>Final Grade = Test 1 x 20% + Test 2 x 20% + Test 3 x 20% + Final Exam x 40%</code></pre>
+  <p>
+    Then, formatted and output results into a new file, which is sorted by student ID. This project is completed by a group of four students in CP-317-C and serves as a tool to help develop our skills in object-oriented design principles, offensive programming, communication and collaboration skills.
+  </p>
+
+  <h2>2. Architecture design/System design</h2>
+  <p><strong>Monolithic</strong></p>
+  <p>
+    This software application follows a monolithic architecture, meaning the core functionalities are bundled into a single program. All operations including file reading, data processing, and output generation occur within one integrated system.
+  </p>
+
+  <h3>2.1 System Components</h3>
+  <ol>
+    <li><strong>Input Module</strong><br>
+      ○ Reads and parses data from NameFile.txt and CourseFile.txt.<br>
+      ○ Uses file I/O with exception handling to validate data format.
+    </li>
+    <li><strong>Data Processing Module</strong><br>
+      ○ Matches student IDs from both files.<br>
+      ○ Calculates final grades using:<br>
+      <code>Final = (Test1 + Test2 + Test3) * 0.2 + FinalExam * 0.4</code><br>
+      ○ Stores processed data in an internal list or class object.
+    </li>
+    <li><strong>Sorting Module</strong><br>
+      ○ Sorts the final student data by student ID.<br>
+      ○ Uses Java’s Collections.sort() or equivalent algorithm.
+    </li>
+    <li><strong>Output Module</strong><br>
+      ○ Writes results into StudentDatabase.txt or similar.<br>
+      ○ Formats output with one decimal place for grades.
+    </li>
+  </ol>
+
+  <h3>2.2 Class Diagram</h3>
+  <pre><code>+---------------------+
+| Student             |
++---------------------+
+| - id: String        |
+| - name: String      |
+| - course: String    |
+| - test1: double     |
+| - test2: double     |
+| - test3: double     |
+| - finalExam: double |
+| + calculateGrade(): double |
++---------------------+
+
++---------------------+
+| StudentFormatter    |
++---------------------+
+| + readNameFile()    |
+| + readCourseFile()  |
+| + processData()     |
+| + sortData()        |
+| + writeOutputFile() |
++---------------------+</code></pre>
+
+  <h3>2.3 Data Flow Diagram</h3>
+  <pre><code>[NameFile.txt]       [CourseFile.txt]
+      |                      |
+      v                      v
+   readNameFile()       readCourseFile()
+      \______________________/
+               |
+         processData()
+               |
+           sortData()
+               |
+         writeOutputFile()
+               |
+     [StudentDatabase.txt]</code></pre>
+
+  <h2>3. Detailed design</h2>
+
+  <h3>Technical Specifications</h3>
+  <p>
+    Information about programming languages, frameworks, libraries, and other technologies used in the development process.
+  </p>
+
+  <h3>3.1 Overview</h3>
+  <p>
+    This software will be using Java as our main compiling language, and the purpose of this program is to calculate and format students final grades into a new output file. It will read the files, “NameFile.txt” and “CourseFile.txt,” and calculate the final grades. Then a new file will be created and sorted by student ID and course code.
+  </p>
+
+  <h3>3.2 Software Calculation</h3>
+  <p>
+    Final grade calculation will be made by reading the file, “CourseFile.txt,” and splitting each line by “,”. This file will take the last four elements, which are the grades for Tests 1-3 and then the final exam. The first three of those elements will be the tests, which will be calculated by using the formula Test 1 x 20% + Test 2 x 20% + Test 3 x 20%. After that has been calculated, the final exam grade will be added too, Final Exam x 40% + Test Grades.
+  </p>
+  <p>
+    Once the final grades have been calculated, the student ID will be compared to the other file, “NameFile.txt”. If the Student IDs match, a new array will be created, the first element includes the students ID, the second element includes the student's name, the third element includes the course code, and the fourth element includes the final grade.
+  </p>
+
+  <h3>3.3 Functions</h3>
+  <p>
+    In the student format program, we will be using functions to operate the program. These functions will be used to read and write files, calculate the students marks, transferring data to different classes, student id comparisons, and more. Here are the functions we will be using:
+  </p>
+  <p><em>Insert functions and model here</em> (UPDATE as we code)</p>
+  <p>
+    Below is an overview of the primary functions and their roles in the system:
+  </p>
+  <p><em>Insert functions and model here</em></p>
+
+  <h3>3.4 Output process</h3>
+  <p>
+    This program will open and read “CourseFile.txt” and “NameFile.txt” and through the program Student Formatter, it will create and write in a new document called Student database, which will contain the student’s name, ID, course code, and final grade in a formatted table where its ordered by student ID.
+  </p>
+
+  <h3>Sample Output</h3>
+  <pre><code>Student Name         Student ID   Course Code   Final Grade
+David Brown          123456789    CP317         100%
+Eric Luo             169060595    CP104         60%
+George Washington    160335035    CP709         97%</code></pre>
+  <p>
+    *(note sample output visual and content does not reflect output from code but calculations will still be correct)
+  </p>
+
+  <h2>4. Summary/Conclusion</h2>
+  <p></p>
+
+  <h2>5. References</h2>
+  <ul>
+    <li>Oracle. (2024). Java Platform, Standard Edition 21 API Specification. Oracle. <a href=
