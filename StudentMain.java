@@ -17,8 +17,7 @@ import java.io.IOException;
  */
 public class StudentMain {
 
-    public static void main(final String[] args)
-            throws InvalidGradeException, InvalidCourseException, InvalidIDException, InvalidNameException {
+    public static void main(final String[] args){
 
         try {
             Scanner courseFile = new Scanner(new File("StudentFormatter/CourseFile.txt"));
@@ -36,10 +35,24 @@ public class StudentMain {
             }
 
             for (String nameLine : names) {
-                String compName = nameLine.split(",")[0].trim();
+                String[] compName = nameLine.trim().split(", ");
                 for (String courseLine : courses) {
-                    String compID = courseLine.split(",")[0].trim();
-                    if (compID.equals(compName)) {
+                    String[] compID = courseLine.trim().split(", ");
+
+                    try{
+                        validity.validID(compName[0]);
+                        validity.validID(compID[0]);
+                        validity.validCourse(compID[1]);
+                        validity.validName(compName[1]);
+                        validity.validGrade(Integer.parseInt(compID[2]));
+                        validity.validGrade(Integer.parseInt(compID[3]));
+                        validity.validGrade(Integer.parseInt(compID[4]));
+                        validity.validGrade(Integer.parseInt(compID[2]));
+                    }catch (InvalidGradeException | InvalidCourseException | InvalidIDException | InvalidNameException e) {
+                        System.out.println( e.getMessage());
+                        System.exit(1);
+                    }
+                    if (compID[0].equals(compName[0])) {
                         studentList.add(StudentUtilities.combineAll(courseLine, nameLine));
                     }
                 }
@@ -66,5 +79,6 @@ public class StudentMain {
         } catch (IOException ioError) {
             ioError.printStackTrace();
         }
+      
     }
 }

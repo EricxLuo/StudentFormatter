@@ -21,28 +21,30 @@ public class validity {
         }
     }
 
-    public static boolean validGrade(int grade) throws InvalidGradeException {
+    public static void validGrade(int grade) throws InvalidGradeException {
         if (grade < 0 || grade > 100) {
-            return false;
+            throw InvalidGradeException.forInvalidGrade();
         }
-        return true;
     }
+  
 
     public static void validCourse(String Course) throws InvalidCourseException {
+
+        
         // Check for null or incorrect length
         if (Course == null || Course.length() != 5) {
             throw InvalidCourseException.forInvalidCourse();
         }
 
         // Check first 2 characters are letters
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 1; i++) {
             if (!Character.isLetter(Course.charAt(i))) {
                 throw InvalidCourseException.forInvalidCourse();
             }
         }
 
         // Check last 3 characters are digits
-        for (int i = 2; i < 5; i++) {
+        for (int i = 2; i < 4; i++) {
             if (!Character.isDigit(Course.charAt(i))) {
                 throw InvalidCourseException.forInvalidCourse();
             }
