@@ -47,7 +47,7 @@ public class StudentMain {
                         validity.validGrade(Integer.parseInt(compID[2]));
                         validity.validGrade(Integer.parseInt(compID[3]));
                         validity.validGrade(Integer.parseInt(compID[4]));
-                        validity.validGrade(Integer.parseInt(compID[2]));
+                        validity.validGrade(Integer.parseInt(compID[5]));
                     }catch (InvalidGradeException | InvalidCourseException | InvalidIDException | InvalidNameException e) {
                         System.out.println( e.getMessage());
                         System.exit(1);
