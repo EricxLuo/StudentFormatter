@@ -1,3 +1,7 @@
+/*
+ * this file creates exceptons for invalid IDs
+ */
+
 public class InvalidIDException extends Exception {
 
     public InvalidIDException(String message) {

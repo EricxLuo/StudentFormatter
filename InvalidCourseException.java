@@ -1,3 +1,7 @@
+/*
+ * this file creates an excepton for invalid courses
+ */
+
 public class InvalidCourseException extends Exception {
 
     public InvalidCourseException(String message) {

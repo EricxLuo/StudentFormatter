@@ -1,3 +1,7 @@
+/*
+ * this file creates an excepton for invalid names
+ */
+
 public class InvalidNameException extends Exception {
 
     public InvalidNameException(String message) {

@@ -1,3 +1,7 @@
+/*
+ * this file create an excepton for invalid grades
+ */
+
 public class InvalidGradeException extends Exception {
 
     public InvalidGradeException(String message) {
