@@ -10,11 +10,9 @@ public class StudentUtilities {
      * 
      * @return student
      */
-    public static Student combineAll(final String course, final String text){
-          
-        String[] c = combine(course, text);
+    public static Student combineAll(final String course, final String text) {
 
- 
+        String[] c = combine(course, text);
 
         Student student = new Student(
                 Integer.parseInt(c[0]),
@@ -26,8 +24,11 @@ public class StudentUtilities {
         return student;
 
     }
+    /*
+     * calculates final grade and returns it
+     */
 
-    public static double finalGrade(int t1, int t2, int t3, int exam)  {
+    public static double finalGrade(int t1, int t2, int t3, int exam) {
         Double mark = -1.0;
         mark = t1 * 0.2 + t2 * 0.2 + t3 * 0.2 + exam * 0.4;
         return mark;

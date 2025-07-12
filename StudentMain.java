@@ -17,11 +17,11 @@ import java.io.IOException;
  */
 public class StudentMain {
 
-    public static void main(final String[] args){
+    public static void main(final String[] args) {
 
         try {
-            Scanner courseFile = new Scanner(new File("StudentFormatter/CourseFile.txt"));
-            Scanner nameFile = new Scanner(new File("StudentFormatter/NameFile.txt"));
+            Scanner courseFile = new Scanner(new File("CourseFile.txt"));
+            Scanner nameFile = new Scanner(new File("NameFile.txt"));
 
             ArrayList<Student> studentList = new ArrayList<Student>();
             ArrayList<String> names = new ArrayList<>();
@@ -39,7 +39,7 @@ public class StudentMain {
                 for (String courseLine : courses) {
                     String[] compID = courseLine.trim().split(", ");
 
-                    try{
+                    try {
                         validity.validID(compName[0]);
                         validity.validID(compID[0]);
                         validity.validCourse(compID[1]);
@@ -48,8 +48,9 @@ public class StudentMain {
                         validity.validGrade(Integer.parseInt(compID[3]));
                         validity.validGrade(Integer.parseInt(compID[4]));
                         validity.validGrade(Integer.parseInt(compID[5]));
-                    }catch (InvalidGradeException | InvalidCourseException | InvalidIDException | InvalidNameException e) {
-                        System.out.println( e.getMessage());
+                    } catch (InvalidGradeException | InvalidCourseException | InvalidIDException
+                            | InvalidNameException e) {
+                        System.out.println(e.getMessage());
                         System.exit(1);
                     }
                     if (compID[0].equals(compName[0])) {
@@ -79,6 +80,6 @@ public class StudentMain {
         } catch (IOException ioError) {
             ioError.printStackTrace();
         }
-      
+
     }
 }

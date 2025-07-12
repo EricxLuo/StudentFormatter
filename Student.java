@@ -4,7 +4,6 @@ public class Student extends Person implements Comparable<Student> {
     public final double minGrade = 0.00;
 
     // Fields
-
     private String course;
     private double mark;
 
@@ -32,7 +31,6 @@ public class Student extends Person implements Comparable<Student> {
      *               return a returns a interger to show if the perosn is larger or
      *               smaller or the same
      */
-
     public int compareTo(final Student person) {
         int a = Integer.compare(this.ID, person.ID);
 
@@ -43,6 +41,10 @@ public class Student extends Person implements Comparable<Student> {
         return a;
 
     }
+    /*
+     * this functions formatts the student object so that it can print into the
+     * output file
+     */
 
     public String toString() {
 
